@@ -14,6 +14,10 @@ public:
 
     void add(const state& state);
 
+    const std::set<state>& get_states() const;
+    int get_to(char ch) const;
+    int get_size_to() const;
+
     void closure();
     item goto_item(const char symbol);
 

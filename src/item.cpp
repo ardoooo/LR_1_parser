@@ -11,8 +11,19 @@ item::item(const grammar& grammar, const state& state) {
     states.insert(state);
 }
 
+int item::get_to(char ch) const {
+    return to[ch];
+}
+
+int item::get_size_to() const {
+    return static_cast<int>(to.size());
+}
 void item::add(const state& state) {
     states.insert(state);
+}
+
+const std::set<state>& item::get_states() const {
+    return states;
 }
 
 void item::closure() {
