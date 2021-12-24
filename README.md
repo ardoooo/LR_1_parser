@@ -1,4 +1,4 @@
-# earley_algorithm
+# LR_1_parser
  ## Сборка
  - mkdir build && cd build
  - cmake -DBUILD_TESTS=ON .. или cmake .. первая команда, если хотите подключить тестирование
