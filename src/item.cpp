@@ -62,3 +62,7 @@ item item::goto_item(const char symbol) {
 bool item::empty() const {
     return states.size() == 0;
 }
+
+bool operator==(const item& a, const item& b) {
+    return a.states == b.states && a.to == b.to;
+}

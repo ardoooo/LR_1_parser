@@ -1,5 +1,6 @@
 #pragma once
 #include <algorithm>
+#include <stack>
 #include "state.h"
 #include "grammar.h"
 #include "item.h"
@@ -21,6 +22,6 @@ private:
 public:
     parsing_table(const grammar& grammar);
 
-    bool parse(const std::string& str) const;
+    bool parse(std::string str) const;
 };
 

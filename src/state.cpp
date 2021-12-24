@@ -11,3 +11,10 @@ state::state(const state& other): in(other.in), out(other.out),
 bool state::operator==(const state& other) const {
     return (rule == other.rule) && (pos_in_rule == other.pos_in_rule) && (next == other.next);
 }
+
+bool operator<(const state& a, const state& b) {
+    if (a.in < b.in) return true;
+    if (a.in > b.in) return false;
+    if (a.out < b.out) return true;
+    return false;
+}

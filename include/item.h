@@ -22,4 +22,5 @@ public:
     item goto_item(const char symbol);
 
     bool empty() const;
+    friend bool operator==(const item& a, const item& b);
 };
