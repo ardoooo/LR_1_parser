@@ -29,7 +29,7 @@ const std::set<char>& grammar::get_alphabet() const {
     return alphabet;
 }
 
-bool grammar::is_terminal(const char symbol) const {
+bool is_terminal(const char symbol) {
     if (symbol == '#' || symbol >= 'A' && symbol <= 'Z') {
         return false;
     }

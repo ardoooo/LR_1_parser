@@ -28,12 +28,12 @@ parsing_table::parsing_table(const grammar& grammar) {
     for (auto curr_item: automaton) {
         ++count;
         for (char ch = 0; ch < 256; ++ch) {
-            if (!is_terminal(curr_item.get_to[ch]) {
+            if (!is_terminal(curr_item.get_to(ch))) {
                 if (table[count].count(ch)) {
                     throw "error";
                 }
                 status st;
-                st.str = s;
+                st.str = 's';
                 st.to_number = curr_item.get_to(ch);
                 table[count][ch] = st;
             }
@@ -42,9 +42,9 @@ parsing_table::parsing_table(const grammar& grammar) {
         for (auto state: states) {
             if (state.pos_in_rule < state.out.size() && is_terminal(state.out[state.pos_in_rule])) {
                 status st;
-                st.char = s;
+                st.str = 's';
                 st.to_number = curr_item.get_to(state.out[state.pos_in_rule]);
-                if (table[count][state.out[state.pos_in_rule]]) {
+                if (table[count].count(state.out[state.pos_in_rule])) {
                     throw "error";
                 }
                 table[count][state.out[state.pos_in_rule]] = st;
@@ -52,7 +52,7 @@ parsing_table::parsing_table(const grammar& grammar) {
             }
             if (state.in != '#') {
                 status st;
-                st.char = r;
+                st.str = 'r';
                 st.in = state.in;
                 st.out = state.out;
                 if (table[count].count(state.next)) {
@@ -61,13 +61,15 @@ parsing_table::parsing_table(const grammar& grammar) {
                 table[count][state.next] = st;
             } else {
                 if (state.next == '$') {
-                    if (table[count].count('$')) Х
-                    throw "error";
+                    if (table[count].count('$')) {
+                        throw "error";
+                    }
                 }
                 status st;
-                st.str = a;
+                st.str = 'a';
                 table[count]['$'] = st;
             }
         }
     }
 }
+

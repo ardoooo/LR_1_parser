@@ -24,6 +24,6 @@ public:
     const std::set<char>& get_alphabet() const;
 
     std::set<char> get_first(const std::string& str) const;
-
-    bool is_terminal(const char symbol) const;
 };
+
+bool is_terminal(const char symbol);
