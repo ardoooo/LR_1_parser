@@ -1,0 +1,1 @@
+add_library(Library SHARED state.cpp grammar.cpp item.cpp parsing_table.cpp)

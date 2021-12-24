@@ -3,6 +3,7 @@
 grammar::grammar() = default;
 
 grammar::grammar(const std::vector<std::string>& list_rules) {
+    add_rule("#->S");
     for (auto rule: list_rules) {
         add_rule(rule);
     }
@@ -14,11 +15,14 @@ std::pair<char, std::string> grammar::parse(const std::string& rule) const {
 
 void grammar::update_alphabet(const std::string& rule) {
     for (auto symbol: rule) {
-        alphabet.insert(symbol);
+        if (symbol != '>' &&  symbol != '-') {
+            alphabet.insert(symbol);
+        }
     }
 }
 void grammar::add_rule(const std::string& rule) {
     rules.insert(parse(rule));
+    update_alphabet(rule);
 }
 
 const std::multimap<char, std::string>& grammar::get_rules() const {
